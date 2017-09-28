@@ -1,0 +1,34 @@
+page-order {
+    .table-number{
+        box-shadow: 0px 1px 13px 1px rgba(0,0,0,0.77);
+        width: 38px;
+    }
+.total-price{    
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+.payment-method-col{
+    margin: auto;
+    font-size: 1.4em;
+}
+.order-header-col{
+        border: solid #003147;
+}
+.order-col{
+        border: thin solid #003147;
+        font-size: 13px;
+}
+.order-bottom{
+    margin: auto;
+    width: 100%;
+    color: #003147;
+    background-color:#fbb713 ;
+}
+.order-table-num{
+    color: #000000;
+}
+.text-input-md{
+    color: #000000;
+}
+}

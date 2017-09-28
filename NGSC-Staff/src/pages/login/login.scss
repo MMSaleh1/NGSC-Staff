@@ -1,0 +1,80 @@
+page-login {
+  .div-cont{
+    position: relative;
+    height: 70%;
+  }
+  .img-cont{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+    .reg-error-row{
+        width: 90%;
+      }
+      .reg-error-div{
+        color: #ffffff;
+        width: 100%;
+        text-align: center;
+      }
+      .round-img{
+        border-radius: 100%;
+        height: 24%;
+        width: 42%;
+        margin: auto;
+        display: block;
+    }
+        
+    }
+    .login-content{
+        background-color: 	#003147;
+    }
+    .icon{
+        color: 	#fbb713;
+        font-size: 3em;
+        margin: auto
+    }
+    .login-row{
+            margin: auto;
+            width: 75%;
+    }
+    .text-input::-moz-placeholder {
+      color: white;
+    }
+    
+    .text-input:-ms-input-placeholder {
+      color: white;
+    }
+    
+    .text-input::-webkit-input-placeholder {
+      text-indent: 0;
+      color: white;
+    }
+    .login-bottom{
+        margin: auto;
+        width: 50%;
+        color: #003147;
+        background-color:#fbb713 ;
+    }
+    
+    ion-input{
+        color: #ffffff;
+    }
+    input{
+      width: 100%;
+      color: #ffffff;
+    }
+    .text-input::-moz-placeholder {
+      color: white;
+      text-align: center;
+    }
+    
+    .text-input:-ms-input-placeholder {
+      color: white;
+      text-align: center;
+    }
+    
+    .text-input::-webkit-input-placeholder {
+      text-indent: 0;
+      color: white;
+      text-align: center;
+    }
