@@ -80,12 +80,11 @@ export class RestaurantPage {
 }
 
 console.log(this.categories);
-this.setRestaurant(this.choosenrestaurant);
-this.filter(this.categories[0]);
+this.reset();
 this.haveMenu = true;
 }
   }
-  setRestaurant(restaurant : any){
+  setRestaurant(restaurant : any = this.choosenrestaurant){
     this.choosenrestaurant = restaurant;
     this.orders= new Array();
     this.subOrders = new Array();
@@ -126,10 +125,10 @@ this.haveMenu = true;
       console.log(totalPrice);
       console.log(this.orders);
       console.log(this.tempCat);
-      this.navCtrl.push(OrderPage,{"orders":this.orders ,"user" :this.user, "restaurant": this.choosenrestaurant ,"allRestaurants" :this.resturants});
+      this.navCtrl.push(OrderPage,{"orders":this.orders ,"user" :this.user, "restaurant": this.choosenrestaurant ,"allRestaurants" :this.resturants , "Parent" : this});
     }
 
-    public filter(category : Category ){
+    public filter(category : Category = this.categories[0] ){
       this.choosenProducts = new Array();
       console.log(category);
       let counter =0;
@@ -157,6 +156,10 @@ this.haveMenu = true;
     
   ionViewDidLoad() {
     console.log('ionViewDidLoad restaurantPage');
+  }
+  public reset(){
+    this.setRestaurant();
+    this.filter();
   }
 
 }

@@ -13,6 +13,7 @@ import { Resturant,Category,Product } from '../../templates/pos';
 export class HomePage {
   public Ready : boolean =false;
   public Pos : Array<Resturant>;
+  public user  : any;
   public name = "Home";
 
   constructor(public navCtrl: NavController,
@@ -88,16 +89,20 @@ export class HomePage {
       })
       
     })
+    this.natStorage.getItem("user").then(data=>{
+      this.user = data;
+    },err=>{
+      this.user = this.navParams.get('user');
+      alert("Login Error please logout and Login again");
+    })
     
   }
   openPage(page : any){
-    if(this.navParams.get("user") != undefined){
-      let user = this.navParams.get("user");
-      this.navCtrl.push(RestaurantPage,{"restaurant":page , "user" : user,"restaurants" : this.Pos});
+    if(this.user != undefined){
+      this.navCtrl.push(RestaurantPage,{"restaurant":page , "user" : this.user,"restaurants" : this.Pos});
     }else{
-      this.navCtrl.push(RestaurantPage,{"restaurant":page , "restaurants" : this.Pos});
+      alert("Error please logout and Login again");
     }
-   
     
   }
 

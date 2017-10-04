@@ -33,9 +33,10 @@ export class OrderPage {
   public allRestaurnats : any;
   public ready : boolean = false;
   public dToRestaurnat :any;
-  public service : number;
-  public charge : number;
-  public totalprice :number;
+  public service : any;
+  public charge : any;
+  public totalprice :any;
+  public priceAfterService :any;
   
 
   constructor(public navCtrl: NavController,
@@ -48,6 +49,7 @@ export class OrderPage {
     this.orders = this.navParams.get("orders");
     this.restaurant = this.navParams.get("restaurant");
     this.user = this.navParams.get("user");
+    //alert(this.user.id);
     this.dToRestaurnat = this.restaurant;
     this.allRestaurnats = this.navParams.get("allRestaurants");
       console.log(this.allRestaurnats);
@@ -59,9 +61,15 @@ export class OrderPage {
         counter++;
       }
     }
-    this.charge = Math.ceil((this.orderPrice*14)/100);
-    this.service = Math.ceil((this.orderPrice*12)/100);
-    this.totalprice = this.orderPrice+this.charge+this.service;
+    this.service =(this.orderPrice*12)/100;
+    this.priceAfterService = this.orderPrice + this.service;
+    this.charge = (this.orderPrice*14)/100;
+    
+    this.totalprice = this.priceAfterService + this.charge;
+    this. priceAfterService = this.priceAfterService.toFixed(2);
+    this.charge = this.charge.toFixed(2);
+    this.service = this.service.toFixed(2);
+    this.totalprice = this.totalprice.toFixed(2);
     this.ready=true;
     
   }
@@ -95,6 +103,7 @@ export class OrderPage {
           ordernumber++;
           if(ordernumber == this.viewOrder.length ){
             alert ("Order Completed");
+            this.navParams.get("Parent").reset();
             this.navCtrl.pop();
           }
     },Err=>{
@@ -106,7 +115,7 @@ export class OrderPage {
     }
     
   },err=>{
-    console.log(err);
+    alert(err);
   })
   
   }else{
