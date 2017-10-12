@@ -13,6 +13,9 @@ import { HomePage } from '../pages/home/home';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderPage } from '../pages/order/order';
 import { LoginPage} from '../pages/login/login';
+import { MainPage} from '../pages/main/main';
+import { ListTableOrderPage} from '../pages/list-table-order/list-table-order';
+import { MyOrdersPage} from '../pages/my-orders/my-orders';
 
 import { PosProvider } from '../providers/pos/pos';
 import { RootProvider } from '../providers/root/root';
@@ -25,7 +28,10 @@ import { UserProvider } from '../providers/user/user';
     HeaderComponent,
     RestaurantPage,
     OrderPage,
-    LoginPage
+    LoginPage,
+    MainPage,
+    ListTableOrderPage,
+    MyOrdersPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { UserProvider } from '../providers/user/user';
     HomePage,
     RestaurantPage,
     OrderPage,
-    LoginPage
+    LoginPage,
+    MainPage,
+    ListTableOrderPage,
+    MyOrdersPage
   ],
   providers: [
     StatusBar,

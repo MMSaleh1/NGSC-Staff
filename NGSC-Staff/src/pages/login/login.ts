@@ -4,7 +4,7 @@ import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import {NativeStorage } from '@ionic-native/native-storage';
 import { UserProvider} from '../../providers/user/user';
 
-import {HomePage} from '../home/home';
+import {MainPage} from '../main/main';
 
 /**
  * Generated class for the LoginPage page.
@@ -46,7 +46,7 @@ export class LoginPage {
         if(data.length > 0){
         console.log(data[0]);
         this.natStorage.setItem("user" ,data[0]);
-        this.navCtrl.setRoot(HomePage,{"user" : data[0]});
+        this.navCtrl.setRoot(MainPage,{"user" : data[0]});
         }else{
           alert("Enter valed username & password");
         }

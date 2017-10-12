@@ -19,6 +19,12 @@ export class PosProvider extends RootProvider {
   private InvoiceHeader: string="AddInvoiceHeader_MobileBased";
   private InvoiceItem: string = "AddInvoiceItem_MobileBased";
   private getPos :string = "getPos";
+  private checkTable : string = "CheckTableOrders";
+  private updateOrder : string ="UpdateComment";
+  private CheckDelevery : string ="CheckDelevery";
+  private OrdersDeliver : string = "AlreadyDeliverd";
+
+
   constructor(public http: Http , public natStorage : NativeStorage) {
     super(http,natStorage);
     console.log('Hello PosProvider Provider');
@@ -40,4 +46,21 @@ export class PosProvider extends RootProvider {
    public add_invoice_item(category_id:any,prod_id:any,quatity:any,price:any,id:any ,rfid:any ,pMethod :any,invNo:any,order_status:any,deliver_to:any,table_no:any,order_comments:any):Observable<any>{
      return this.http.get(`${this.CONFIG.API}${this.InvoiceItem}?category_id=${category_id}&prod_id=${prod_id}&quatity=${quatity}&price=${price}&id=${id}&rfid=${rfid}&pMethod=${pMethod}&invNo=${invNo}&order_status=${order_status}&deliver_to=${deliver_to}&table_no=${table_no}&order_comments=${order_comments}`).map(res=> <any>res.json());
    }
+
+   public get_table_order(table_num :any) : Observable<any>{
+    return this.http.get(`${this.CONFIG.API}${this.checkTable}?TableNo=${table_num}`).map(res=><any>res.json());
+   }
+
+   public  update_order( id : any , comment : any) :Observable<any>{
+    return this.http.get(`${this.CONFIG.API}${this.updateOrder}?orderID=${id}&NewComment=${comment}`).map(res=><any>res.json());
+   }
+
+   public check_delevery(id : any) :Observable<any>{
+     return this.http.get(`${this.CONFIG.API}${this.CheckDelevery}?employeeID=${id}`).map(res=><any>res.json());
+   }
+
+   public deliver_order(id : any) : Observable<any>{
+     return this.http.get(`${this.CONFIG.API}${this.OrdersDeliver}?orderID=${id}`).map(res=><any>res.json());
+   }
+
 }

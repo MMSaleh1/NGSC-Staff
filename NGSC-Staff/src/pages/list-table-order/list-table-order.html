@@ -1,0 +1,55 @@
+<!--
+  Generated template for the ListTableOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ngsc-header [name]='name'></ngsc-header>
+  
+  </ion-header>
+<ion-content padding>
+<ion-row>
+  <ion-col>Table Number</ion-col>
+  <ion-col><ion-input type="number"  class="table-number"  [(ngModel)]="tableCode"  placeholder="enter Table number" ></ion-input></ion-col>
+</ion-row>
+
+<ion-row>
+  <button ion-button  class="saerch-bottom" block (tap)="searchTable()">Search</button>
+</ion-row>
+
+<div *ngIf="NoOrders == true">
+  <div class="no-orders">NO ORDERS</div>
+</div>
+<div *ngIf="ordersReady" style="height: 70%;">
+    <ion-scroll scrollY="true" style="height: 100%;">
+        <ion-list>
+            <ion-item *ngFor="let item of orders;">
+              <ion-row>
+                <ion-col><p>{{item.name}}</p></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><p> Quantity : {{item.qty}}</p></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col><p>Ordered By :{{item.Ename}}</p></ion-col>
+              </ion-row>
+              <ion-row>
+                <input type="text" value="item.desc" [(ngModel)]="item.desc">
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <div *ngIf="item.status" style="color :#3A16BE ;">Finished</div>
+                    <div *ngIf="!item.status" style="color :#CC2929;">Pending</div>
+                  </ion-col>
+                  <ion-col>
+                     <button ion-button  class="saerch-bottom" block (tap)="updateOrder(item)">update</button>
+                  </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+    </ion-scroll>
+</div>
+
+</ion-content>

@@ -5,6 +5,7 @@ import {NativeStorage} from '@ionic-native/native-storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage} from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
+import {MainPage} from '../pages/main/main';
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,7 +15,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen , public natstorage :NativeStorage) {
     this.natstorage.getItem("user").then(data=>{
-      this.rootPage=HomePage;
+      this.rootPage=MainPage;
       this.nav.setRoot(this.rootPage);
       },err=>{
         this.nav.setRoot(this.rootPage);
