@@ -6,6 +6,7 @@
 
 
 <ion-content padding>
+  <div><button ion-button  class="update-button" block (tap)="getOrders()">update</button></div>
   <div *ngIf="NoOrdersFlag && !Ready">
     <div class="no-orders">{{NoOrderMssg}}</div>
   </div>
@@ -29,15 +30,12 @@
                   <ion-col><p> Quantity : {{item.qty}}</p></ion-col>
                 </ion-row>
                 <ion-row>
-                  <input type="text" value="item.desc" [(ngModel)]="item.desc">
+                    <ion-col><p>{{item.desc}}</p></ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
                       <div *ngIf="item.status" style="color :#3A16BE ;">Finished</div>
                       <div *ngIf="!item.status" style="color :#CC2929;">Pending</div>
-                    </ion-col>
-                    <ion-col>
-                       <button ion-button  class="saerch-bottom" block (tap)="updateOrder(item)">update</button>
                     </ion-col>
                   </ion-row>
                   <ion-row>

@@ -35,7 +35,6 @@ export class MyOrdersPage {
   }
 
   getOrders(){
-    this.Ready = false;
     this.posProvider.check_delevery(this.userid).subscribe(data=>{
       
       if(data.length > 0){
@@ -43,8 +42,8 @@ export class MyOrdersPage {
         for(let i =0 ; i<data.length ; i++){
           this.orders.push({desc : data[i].OrderDetails , tableNo : data[i].TableNo ,id : data[i].OrderID, status : data[i].OrderFinished ,Ename : data[i].EmployeeName , qty : data[i].QTY , name : data[i].ProductName ,});
         }
-        console.log(data);
         this.Ready = true;
+        this.NoOrdersFlag = false;
         
       }else{
         this.Ready = false ;
