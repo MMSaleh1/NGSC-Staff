@@ -19,6 +19,7 @@ import {Resturant , Product , Category} from '../../templates/pos';
   templateUrl: 'restaurant.html',
 })
 export class RestaurantPage {
+  public searchterm ="";
   public name : string ="restaurants";
   private orders : Array<{
     item: Product;
@@ -132,12 +133,7 @@ this.haveMenu = true;
       this.choosenProducts = new Array();
       console.log(category);
       let counter =0;
-      if(this.subOrders.length>0){
-        for(let i = 0;i<this.subOrders.length;i++){
-          this.orders[this.subOrders[i].mainIndex].quantity=this.subOrders[i].quantity;
-        }
-      }
-      this.subOrders=new Array();
+      this.saveOrders();
       if(category.id =='-2'){
         this.choosenProducts = this.choosenrestaurant.products;
         this.subOrders = this.orders;
@@ -154,9 +150,20 @@ this.haveMenu = true;
       }
     }
     
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad restaurantPage');
-  }
+    public search(){
+      this.saveOrders();
+      this.choosenProducts= this.ProdProvider.filter(this.choosenrestaurant.products,this.searchterm);
+     }
+
+     saveOrders(){
+      if(this.subOrders.length>0){
+        for(let i = 0;i<this.subOrders.length;i++){
+          this.orders[this.subOrders[i].mainIndex].quantity=this.subOrders[i].quantity;
+        }
+      }
+      this.subOrders=new Array();
+
+     }
   public reset(){
     this.setRestaurant();
     this.filter();

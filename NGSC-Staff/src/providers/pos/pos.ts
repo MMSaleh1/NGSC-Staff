@@ -63,4 +63,15 @@ export class PosProvider extends RootProvider {
      return this.http.get(`${this.CONFIG.API}${this.OrdersDeliver}?orderID=${id}`).map(res=><any>res.json());
    }
 
+
+   public filter(arr : Array<any>,searchTerm :string =""){
+    if(searchTerm ==""){
+      return arr;
+    }else{
+    return arr.filter((item) => {
+        return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });     
+    }
+}
+
 }

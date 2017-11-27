@@ -119,7 +119,9 @@
 </div>
 
  <ion-row>
+ <div *ngIf="!ordering">
    <button ion-button  class="order-bottom" block (tap)="confirmOrder()">Confirm Order</button>
+  </div>
  </ion-row>
    </div>
  </ion-content>

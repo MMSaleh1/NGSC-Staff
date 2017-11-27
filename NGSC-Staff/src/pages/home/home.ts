@@ -24,10 +24,6 @@ export class HomePage {
     
     ) {
     this.Pos= new Array();
-    this.natStorage.getItem("POS").then(data=>{
-      this.Pos = data;
-      this.Ready=true;
-    },err=>{
       this.posProvider.get_Pos().subscribe(pos=>{
         if(pos.length >0){
           this.posProvider.get_products().subscribe(prod=>{
@@ -87,8 +83,6 @@ export class HomePage {
       },err=>{
         console.log(err);
       })
-      
-    })
     this.natStorage.getItem("user").then(data=>{
       this.user = data;
     },err=>{

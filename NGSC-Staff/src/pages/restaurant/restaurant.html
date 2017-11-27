@@ -18,6 +18,9 @@
     </div>
   </div>
   <div class="items-cont" *ngIf="haveMenu" >
+      <ion-row>
+          <ion-searchbar [(ngModel)]="searchterm" (ionInput)="search()" placeholder="Search" ></ion-searchbar>
+          </ion-row>
     <ion-row>
       <ion-col>
         <h6>Choose Category</h6>

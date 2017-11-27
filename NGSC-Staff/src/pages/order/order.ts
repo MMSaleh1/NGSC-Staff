@@ -37,6 +37,8 @@ export class OrderPage {
   public charge : any;
   public totalprice :any;
   public priceAfterService :any;
+
+  public ordering : boolean = false;
   
 
   constructor(public navCtrl: NavController,
@@ -84,7 +86,8 @@ export class OrderPage {
   }
   
   public confirmOrder(){
-    if(this.tableCode >0 && this.tableCode <= 100){
+    if(this.tableCode >0 && this.tableCode <= 200){
+      this.ordering = true;
     let count = 0;
     
     for(var i =0 ; i<this.orders.length;i++){
@@ -108,6 +111,7 @@ export class OrderPage {
           }
     },Err=>{
       alert(Err);
+      this.ordering = false;
     })
       }
       
@@ -116,10 +120,12 @@ export class OrderPage {
     
   },err=>{
     alert(err);
+    this.ordering = false;
   })
   
   }else{
     alert("enter valid table number");
+    this.ordering = false;
   }
 }
   ionViewDidLoad() {
