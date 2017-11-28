@@ -152,6 +152,7 @@ this.haveMenu = true;
     
     public search(){
       this.saveOrders();
+      this.choosenProducts= new Array();
       this.choosenProducts= this.ProdProvider.filter(this.choosenrestaurant.products,this.searchterm);
      }
 
