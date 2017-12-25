@@ -38,7 +38,8 @@
   </ion-row>
     <ion-scroll scrollY="true" style="height: 100%;">
 
-      <ion-list>
+      <ion-list *ngIf="choosenProducts.length >0">
+        
         <ion-item *ngFor="let item of choosenProducts ; let index = index ; trackBy:trackByIndex;">
           <ion-row>
             <ion-col col-auto>

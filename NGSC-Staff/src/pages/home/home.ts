@@ -24,6 +24,16 @@ export class HomePage {
     
     ) {
     this.Pos= new Array();
+    if(this.Ready==false){
+      this.natStorage.getItem("POS").then(data=>
+        {
+          this.Pos= data;
+          this.Ready=true;
+        },err=>{
+    
+        });
+    }
+    
       this.posProvider.get_Pos().subscribe(pos=>{
         if(pos.length >0){
           this.posProvider.get_products().subscribe(prod=>{
@@ -86,7 +96,7 @@ export class HomePage {
     this.natStorage.getItem("user").then(data=>{
       this.user = data;
     },err=>{
-      this.user = this.navParams.get('user');
+      this.user = {EmployeeID:"17" , EmployeeName : "Ramy"};
       alert("Login Error please logout and Login again");
     })
     

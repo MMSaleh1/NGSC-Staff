@@ -29,7 +29,7 @@ export class MyOrdersPage {
     this.getOrders();
   },err=>{
     //for browser testing
-    this.userid = "3";
+    this.userid = "17";
     this.getOrders();
   })
   }

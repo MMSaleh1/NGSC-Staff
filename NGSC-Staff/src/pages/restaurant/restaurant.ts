@@ -152,8 +152,19 @@ this.haveMenu = true;
     
     public search(){
       this.saveOrders();
-      this.choosenProducts= new Array();
+      
       this.choosenProducts= this.ProdProvider.filter(this.choosenrestaurant.products,this.searchterm);
+      let counter=0;
+      for(let j =0;j<this.choosenProducts.length;j++){
+        for(let i =0; i<this.orders.length;i++){
+          if(this.orders[i].item == this.choosenProducts[j]){
+            this.subOrders[counter++]=this.orders[i];
+            break;
+          }
+        }
+      }
+      console.log(this.subOrders);
+      console.log(this.choosenProducts);
      }
 
      saveOrders(){
